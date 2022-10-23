@@ -87,10 +87,12 @@ const getWaiterFromWaitlist = async (
     throw new Error('Must provide either email or uuid');
   }
 
-  await fetch(endpoint, {
+  const response = await fetch(endpoint, {
     method: 'GET',
     headers,
   });
+
+  return response.json() as Promise<WaiterProps>;
 };
 
 const useWaitlist = (
