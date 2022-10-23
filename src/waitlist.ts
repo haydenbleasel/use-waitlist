@@ -70,9 +70,7 @@ const addWaiterToWaitlist = async (api_key: string, email: string) => {
     body: JSON.stringify({ email, api_key }),
   });
 
-  return response.json() as Promise<{
-    waiter: WaiterProps;
-  }>;
+  return response.json() as Promise<WaiterProps>;
 };
 
 const getWaiterFromWaitlist = async (
@@ -82,11 +80,9 @@ const getWaiterFromWaitlist = async (
   let endpoint = '';
 
   if (props.email) {
-    endpoint = createEndpoint(
-      `waitlist?api_key=${api_key}&email=${props.email}`
-    );
+    endpoint = createEndpoint(`waiter?api_key=${api_key}&email=${props.email}`);
   } else if (props.uuid) {
-    endpoint = createEndpoint(`waitlist?api_key=${api_key}&uuid=${props.uuid}`);
+    endpoint = createEndpoint(`waiter?api_key=${api_key}&uuid=${props.uuid}`);
   } else {
     throw new Error('Must provide either email or uuid');
   }
@@ -102,7 +98,7 @@ const useWaitlist = (
 ): {
   data: WaitlistProps | undefined;
   error: Error | undefined;
-  add: (email: string) => Promise<{ waiter: WaiterProps }>;
+  add: (email: string) => Promise<WaiterProps>;
   get: (props: GetWaiterProps) => Promise<void>;
 } => {
   const endpoint = createEndpoint(`waitlist?api_key=${api_key}`);
