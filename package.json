@@ -1,7 +1,7 @@
 {
   "name": "@haydenbleasel/use-waitlist",
   "version": "1.0.5",
-  "description": "A tiny, SSR-friendly hook for managing waitlists using getwaitlist.com",
+  "description": "A tiny hook for managing waitlists using getwaitlist.com",
   "files": [
     "dist"
   ],

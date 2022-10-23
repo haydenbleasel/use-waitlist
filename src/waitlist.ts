@@ -74,19 +74,18 @@ const useWaitlist = (
 ): {
   data: WaitlistProps | undefined;
   error: Error | undefined;
-  addWaiter: (email: string) => Promise<{ waiter: WaiterProps }>;
-  getWaiter: (props: GetWaiterProps) => Promise<void>;
+  add: (email: string) => Promise<{ waiter: WaiterProps }>;
+  get: (props: GetWaiterProps) => Promise<void>;
 } => {
   const endpoint = createEndpoint(`/waitlist?api_key=${api_key}`);
   const { data, error } = useSWR<WaitlistProps, Error>(endpoint, fetcher);
 
-  const addWaiter = async (email: string) =>
-    addWaiterToWaitlist(api_key, email);
+  const add = async (email: string) => addWaiterToWaitlist(api_key, email);
 
-  const getWaiter = async (props: GetWaiterProps) =>
+  const get = async (props: GetWaiterProps) =>
     getWaiterFromWaitlist(api_key, props);
 
-  return { data, error, addWaiter, getWaiter };
+  return { data, error, add, get };
 };
 
 export default useWaitlist;
