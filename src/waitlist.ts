@@ -101,7 +101,7 @@ const useWaitlist = (
   data: WaitlistProps | undefined;
   error: Error | undefined;
   add: (email: string) => Promise<WaiterProps>;
-  get: (props: GetWaiterProps) => Promise<void>;
+  get: (props: GetWaiterProps) => Promise<WaiterProps>;
 } => {
   const endpoint = createEndpoint(`waitlist?api_key=${api_key}`);
   const { data, error } = useSWR<WaitlistProps, Error>(endpoint, fetcher);
