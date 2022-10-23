@@ -2,7 +2,37 @@ import useSWR from 'swr';
 import headers from './utils/headers';
 import createEndpoint from './utils/origin';
 
-type WaitlistProps = unknown;
+type WaitlistProps = {
+  api_key: string;
+  configuration_style_json: {
+    social_links: {
+      facebook: string;
+      instagram: string;
+      linkedin: string;
+      pinterest: string;
+      twitter: string;
+    };
+    status_description: string;
+    status_font_color: string;
+    status_main_color: string;
+    widget_background_color: string;
+    widget_button_color: string;
+    widget_font_color: string;
+  };
+  created_at: string;
+  logo: string;
+  redirects_to_status_page: boolean;
+  spots_to_move_upon_referral: number;
+  uses_firstname_lastname: boolean;
+  uses_leaderboard: boolean;
+  uses_waiter_verification: boolean;
+  waitlist_name: string;
+  waitlist_url_location: string;
+  statistics: {
+    current_waiters: number;
+    total_signups: number;
+  };
+};
 
 type WaiterProps = {
   amount_referred: number;
@@ -32,12 +62,12 @@ const fetcher = async (url: string) =>
   }).then(async (response) => response.json());
 
 const addWaiterToWaitlist = async (api_key: string, email: string) => {
-  const endpoint = createEndpoint(`/waitlist?api_key=${api_key}`);
+  const endpoint = createEndpoint('/waiter');
 
   const response = await fetch(endpoint, {
     method: 'POST',
     headers,
-    body: JSON.stringify({ email }),
+    body: JSON.stringify({ email, api_key }),
   });
 
   return response.json() as Promise<{
