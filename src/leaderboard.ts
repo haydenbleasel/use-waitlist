@@ -15,7 +15,7 @@ const fetcher = async (url: string) =>
 
 const useLeaderboard = (
   api_key: string,
-  number_of_waiters: number
+  number_of_waiters = 5
 ): {
   data: LeaderboardProps | undefined;
   error: Error | undefined;
