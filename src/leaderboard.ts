@@ -21,7 +21,7 @@ const useLeaderboard = (
   error: Error | undefined;
 } => {
   const endpoint = createEndpoint(
-    `/waitlist/${api_key}/leaderboard?number_of_waiters=${number_of_waiters}`
+    `waitlist/${api_key}/leaderboard?number_of_waiters=${number_of_waiters}`
   );
 
   const { data, error } = useSWR<LeaderboardProps, Error>(endpoint, fetcher);
