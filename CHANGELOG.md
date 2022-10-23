@@ -1,3 +1,16 @@
+# v1.0.5 (Sun Oct 23 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Fix typo ([@haydenbleasel](https://github.com/haydenbleasel))
+- Parse and await waiter response ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.4 (Sun Oct 23 2022)
 
 #### ⚠️ Pushed to `main`
