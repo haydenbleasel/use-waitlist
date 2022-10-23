@@ -86,8 +86,8 @@ const MyLeaderboard: FC = () => {
 
   return (
     <div>
-      {leaderboard.data.map((waiter) => (
-        <p>{waiter}</p>
+      {leaderboard.data.map((waiter, index) => (
+        <p key={index}>{waiter.email}</p>
       ))}
     </div>
   );
