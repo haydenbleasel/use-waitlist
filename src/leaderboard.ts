@@ -1,4 +1,6 @@
 import useSWR from 'swr';
+import headers from './utils/headers';
+import createEndpoint from './utils/origin';
 
 type LeaderboardProps = {
   email: string;
@@ -8,10 +10,7 @@ type LeaderboardProps = {
 const fetcher = async (url: string) =>
   fetch(url, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
+    headers,
   }).then(async (response) => response.json());
 
 const useLeaderboard = (
@@ -21,10 +20,9 @@ const useLeaderboard = (
   data: LeaderboardProps | undefined;
   error: Error | undefined;
 } => {
-  const endpoint = new URL(
-    `/waitlist/${api_key}/leaderboard?number_of_waiters=${number_of_waiters}`,
-    origin
-  ).href;
+  const endpoint = createEndpoint(
+    `/waitlist/${api_key}/leaderboard?number_of_waiters=${number_of_waiters}`
+  );
 
   const { data, error } = useSWR<LeaderboardProps, Error>(endpoint, fetcher);
 
