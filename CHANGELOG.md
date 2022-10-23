@@ -1,3 +1,16 @@
+# v1.0.6 (Sun Oct 23 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Fix README mapping ([@haydenbleasel](https://github.com/haydenbleasel))
+- Improve README ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.5 (Sun Oct 23 2022)
 
 #### ⚠️ Pushed to `main`
