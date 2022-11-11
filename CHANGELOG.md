@@ -1,3 +1,20 @@
+# v1.0.8 (Fri Nov 11 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Bump deps ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### 🔩 Dependency Updates
+
+- Bump @types/react-dom from 18.0.6 to 18.0.8 [#2](https://github.com/haydenbleasel/use-waitlist/pull/2) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.7 (Fri Nov 11 2022)
 
 #### ⚠️ Pushed to `main`
