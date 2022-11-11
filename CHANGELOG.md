@@ -1,3 +1,22 @@
+# v1.0.7 (Fri Nov 11 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Remove next dep ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### 🔩 Dependency Updates
+
+- Bump @types/react from 18.0.21 to 18.0.24 [#5](https://github.com/haydenbleasel/use-waitlist/pull/5) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump jest from 29.2.1 to 29.2.2 [#4](https://github.com/haydenbleasel/use-waitlist/pull/4) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- Bump @typescript-eslint/eslint-plugin from 5.40.1 to 5.42.0 [#3](https://github.com/haydenbleasel/use-waitlist/pull/3) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.6 (Sun Oct 23 2022)
 
 #### ⚠️ Pushed to `main`
