@@ -1,3 +1,15 @@
+# v1.0.10 (Thu Dec 22 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Misc fixes ([@haydenbleasel](https://github.com/haydenbleasel))
+
+#### Authors: 1
+
+- Hayden Bleasel ([@haydenbleasel](https://github.com/haydenbleasel))
+
+---
+
 # v1.0.9 (Fri Nov 11 2022)
 
 #### ⚠️ Pushed to `main`
