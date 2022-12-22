@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import useSWR from 'swr';
+import fetcher from './utils/fetcher';
 import headers from './utils/headers';
 import createEndpoint from './utils/origin';
 
@@ -55,12 +57,6 @@ type GetWaiterProps = {
   uuid?: string;
 };
 
-const fetcher = async (url: string) =>
-  fetch(url, {
-    method: 'GET',
-    headers,
-  }).then(async (response) => response.json());
-
 const addWaiterToWaitlist = async (api_key: string, email: string) => {
   const endpoint = createEndpoint('waiter');
 
@@ -69,6 +65,10 @@ const addWaiterToWaitlist = async (api_key: string, email: string) => {
     headers,
     body: JSON.stringify({ email, api_key }),
   });
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
 
   return response.json() as Promise<WaiterProps>;
 };
@@ -92,6 +92,10 @@ const getWaiterFromWaitlist = async (
     headers,
   });
 
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
   return response.json() as Promise<WaiterProps>;
 };
 
@@ -100,18 +104,36 @@ const useWaitlist = (
 ): {
   data: WaitlistProps | undefined;
   error: Error | undefined;
-  add: (email: string) => Promise<WaiterProps>;
-  get: (props: GetWaiterProps) => Promise<WaiterProps>;
+  add: (email: string) => Promise<WaiterProps | void>;
+  get: (props: GetWaiterProps) => Promise<WaiterProps | void>;
 } => {
   const endpoint = createEndpoint(`waitlist?api_key=${api_key}`);
-  const { data, error } = useSWR<WaitlistProps, Error>(endpoint, fetcher);
+  const response = useSWR<WaitlistProps, Error>(endpoint, fetcher);
+  const [error, setError] = useState(response.error);
 
-  const add = async (email: string) => addWaiterToWaitlist(api_key, email);
+  useEffect(() => {
+    if (response.error) {
+      setError(response.error);
+    }
+  }, [response.error]);
 
-  const get = async (props: GetWaiterProps) =>
-    getWaiterFromWaitlist(api_key, props);
+  const add = async (email: string) => {
+    try {
+      return await addWaiterToWaitlist(api_key, email);
+    } catch (error) {
+      setError(error as Error);
+    }
+  };
 
-  return { data, error, add, get };
+  const get = async (props: GetWaiterProps) => {
+    try {
+      return await getWaiterFromWaitlist(api_key, props);
+    } catch (error) {
+      setError(error as Error);
+    }
+  };
+
+  return { data: response.data, error, add, get };
 };
 
 export default useWaitlist;

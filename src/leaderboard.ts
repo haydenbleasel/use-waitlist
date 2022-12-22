@@ -1,17 +1,11 @@
 import useSWR from 'swr';
-import headers from './utils/headers';
+import fetcher from './utils/fetcher';
 import createEndpoint from './utils/origin';
 
 type LeaderboardProps = {
   email: string;
   amount_referred: number;
 }[];
-
-const fetcher = async (url: string) =>
-  fetch(url, {
-    method: 'GET',
-    headers,
-  }).then(async (response) => response.json());
 
 const useLeaderboard = (
   api_key: string,
